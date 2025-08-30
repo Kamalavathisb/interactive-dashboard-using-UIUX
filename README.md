@@ -1,7 +1,5 @@
 # NeoDash Pro — Interactive UI/UX Dashboard Showcase
 
-![NeoDash Pro Screenshot](./screenshot.png)
-
 ## Overview
 
 **NeoDash Pro** is a modern, futuristic interactive dashboard designed to showcase advanced UI/UX design skills with impressive animations and smooth user interactions. This project demonstrates expertise in:
