@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Interactive Dashboard | UI/UX Showcase</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <style>
+        :root {
+            --primary: #8b5cf6;
+            --secondary: #6366f1;
+            --accent: #06b6d4;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --error: #ef4444;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: #e2e8f0;
+            overflow-x: hidden;
+        }
+        #particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+        .glass {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+        }
+        .glass-dark {
+            background: rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+        }
+        @keyframes glow {
+            0%, 100% { box-shadow: 0 0 20px rgba(139, 92, 246, 0.3); }
+            50% { box-shadow: 0 0 40px rgba(139, 92, 246, 0.6); }
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+        @keyframes slideIn {
+            from { transform: translateX(-100px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        @keyframes rotate3D {
+            0% { transform: rotateY(0deg) rotateX(0deg); }
+            100% { transform: rotateY(360deg) rotateX(360deg); }
+        }
+        .float-animation {
+            animation: float 6s ease-in-out infinite;
+        }
+        .glow-animation {
+            animation: glow 3s ease-in-out infinite;
+        }
+        .pulse-animation {
+            animation: pulse 2s ease-in-out infinite;
+        }
+        .slide-in {
+            animation: slideIn 1s ease-out forwards;
+        }
+        .rotate-3d {
+            animation: rotate3D 20s linear infinite;
+            transform-style: preserve-3d;
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #8b5cf6, #6366f1, #06b6d4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .hover-lift {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .hover-lift:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+        }
+        .chart-bar {
+            transition: height 1.5s ease-in-out, background-color 0.3s ease;
+        }
+        .chart-bar:hover {
+            background: linear-gradient(180deg, #8b5cf6, #6366f1) !important;
+        }
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, #8b5cf6, #6366f1);
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(180deg, #6366f1, #06b6d4);
+        }
+        .typewriter {
+            overflow: hidden;
+            border-right: 3px solid #8b5cf6;
+            white-space: nowrap;
+            animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+        }
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+        @keyframes blink-caret {
+            from, to { border-color: transparent; }
+            50% { border-color: #8b5cf6; }
+        }
+    </style>
+</head>
+<body>
+    <div id="particles-js"></div>
+    <div class="min-h-screen py-8 px-4">
+        <div class="max-w-7xl mx-auto">
+            <header class="glass p-6 mb-8 slide-in">
+                <div class="flex items-center justify-between">
+                    <h1 class="text-4xl font-bold gradient-text">NeoDash Pro</h1>
+                    <div class="flex items-center space-x-4">
+                        <div class="relative">
+                            <div class="absolute -top-1 -right-1 w-3 h-3 bg-green-500 rounded-full pulse-animation"></div>
+                            <div class="w-10 h-10 rounded-full bg-gradient-to-r from-purple-600 to-blue-600 flex items-center justify-center text-white font-semibold">JD</div>
+                        </div>
+                        <button class="glass-dark px-4 py-2 rounded-lg hover-lift">
+                            <span class="flex items-center space-x-2">
+                                <span>Settings</span>
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                </svg>
+                            </span>
+                        </button>
+                    </div>
+                </div>
+            </header>
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <div class="space-y-8">
+                    <div class="glass p-6 rounded-2xl hover-lift">
+                        <h2 class="text-2xl font-semibold mb-4 gradient-text">Welcome Back!</h2>
+                        <p class="text-gray-300 mb-6">Your dashboard is ready with the latest updates and insights.</p>
+                        <div class="bg-gradient-to-r from-purple-600 to-blue-600 p-4 rounded-xl">
+                            <div class="flex items-center justify-between">
+                                <span class="text-white font-semibold">System Status</span>
+                                <span class="text-green-300 text-sm pulse-animation">● Online</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-4">
+                        <div class="glass p-4 rounded-xl hover-lift">
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <p class="text-gray-400 text-sm">Revenue</p>
+                                    <p class="text-2xl font-bold text-white">$42.8K</p>
+                                </div>
+                                <div class="w-12 h-12 bg-green-500/20 rounded-full flex items-center justify-center">
+                                    <svg class="w-6 h-6 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="glass p-4 rounded-xl hover-lift">
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <p class="text-gray-400 text-sm">Users</p>
+                                    <p class="text-2xl font-bold text-white">1,248</p>
+                                </div>
+                                <div class="w-12 h-12 bg-blue-500/20 rounded-full flex items-center justify-center">
+                                    <svg class="w-6 h-6 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="lg:col-span-2">
+                    <div class="glass p-6 rounded-2xl hover-lift">
+                        <h2 class="text-2xl font-semibold mb-6 gradient-text">Performance Analytics</h2>
+                        <div class="h-64 mb-6">
+                            <div class="grid grid-cols-7 gap-2 h-full items-end">
+                                <div class="chart-bar bg-gradient-to-t from-purple-600 to-purple-400 h-20 rounded-t" style="height: 70%"></div>
+                                <div class="chart-bar bg-gradient-to-t from-blue-600 to-blue-400 h-20 rounded-t" style="height: 85%"></div>
+                                <div class="chart-bar bg-gradient-to-t from-green-600 to-green-400 h-20 rounded-t" style="height: 60%"></div>
+                                <div class="chart-bar bg-gradient-to-t from-yellow-600 to-yellow-400 h-20 rounded-t" style="height: 45%"></div>
+                                <div class="chart-bar bg-gradient-to-t from-red-600 to-red-400 h-20 rounded-t" style="height: 35%"></div>
+                                <div class="chart-bar bg-gradient-to-t from-purple-600 to-purple-400 h-20 rounded-t" style="height: 75%"></div>
+                                <div class="chart-bar bg-gradient-to-t from-blue-600 to-blue-400 h-20 rounded-t glow-animation" style="height: 95%"></div>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-400">Last 7 days</span>
+                            <button class="bg-gradient-to-r from-purple-600 to-blue-600 px-4 py-2 rounded-lg text-white hover:from-purple-700 hover:to-blue-700 transition-all">View Report</button>
+                        </div>
+                    </div>
+                    <div class="glass p-6 rounded-2xl mt-8 hover-lift">
+                        <h2 class="text-2xl font-semibold mb-6 gradient-text">Recent Activity</h2>
+                        <div class="space-y-4">
+                            <div class="flex items-center space-x-4 p-3 bg-white/5 rounded-lg">
+                                <div class="w-10 h-10 bg-green-500/20 rounded-full flex items-center justify-center">
+                                    <svg class="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <p class="font-semibold">Project Completed</p>
+                                    <p class="text-gray-400 text-sm">Mobile App Design</p>
+                                </div>
+                                <span class="text-gray-400 text-sm ml-auto">2h ago</span>
+                            </div>
+                            <div class="flex items-center space-x-4 p-3 bg-white/5 rounded-lg">
+                                <div class="w-10 h-10 bg-blue-500/20 rounded-full flex items-center justify-center">
+                                    <svg class="w-5 h-5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <p class="font-semibold">New Feature Added</p>
+                                    <p class="text-gray-400 text-sm">Dark Mode Toggle</p>
+                                </div>
+                                <span class="text-gray-400 text-sm ml-auto">4h ago</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-12 flex justify-center">
+                <div class="rotate-3d glass p-8 rounded-2xl transform-gpu">
+                    <h3 class="text-xl font-semibold text-center gradient-text mb-4">Interactive 3D Element</h3>
+                    <p class="text-gray-300 text-center">Hover to see perspective shift</p>
+                </div>
+            </div>
+            <footer class="glass p-6 mt-12 text-center">
+                <p class="text-gray-400">© 2024 NeoDash Pro. Built with modern UI/UX principles and advanced animations.</p>
+            </footer>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            particlesJS('particles-js', {
+                particles: {
+                    number: { value: 80, density: { enable: true, value_area: 800 } },
+                    color: { value: "#8b5cf6" },
+                    shape: { type: "circle" },
+                    opacity: { value: 0.5, random: true },
+                    size: { value: 3, random: true },
+                    line_linked: {
+                        enable: true,
+                        distance: 150,
+                        color: "#6366f1",
+                        opacity: 0.4,
+                        width: 1
+                    },
+                    move: {
+                        enable: true,
+                        speed: 2,
+                        direction: "none",
+                        random: true,
+                        straight: false,
+                        out_mode: "out",
+                        bounce: false
+                    }
+                },
+                inter
